@@ -1,0 +1,15 @@
+Description=Server
+After=syslog.target
+After=network.target[Service]
+User=username
+Type=simple
+
+[Service]
+ExecStart=/home/hoangk/program/node node app.js
+Restart=always
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=helloworld
+
+[Install]
+WantedBy=multi-user.target
