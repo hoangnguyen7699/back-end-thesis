@@ -1,6 +1,6 @@
 const express = require("express");
 const app = express();
-const port = 3100;
+const port = 3000;
 const fs = require("fs");
 var multer = require("multer");
 var cors = require("cors");
@@ -22,6 +22,10 @@ var storage = multer.diskStorage({
 
 var upload = multer({ storage: storage }).array("file");
 
+app.get("/test", (req, res) =>{
+  res.send("Hello")
+})
+app.use('/', express.static("./public"));
 app.post("/upfile", function (req, res) {
   const distance = req.query.distance;
   upload(req, res, async function (err) {
